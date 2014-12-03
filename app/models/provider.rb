@@ -1,4 +1,5 @@
 class Provider < ActiveRecord::Base
+  belongs_to :user
 
   def self.from_omniauth(auth)
     where(auth.slice("provider", "uid")).first || create_from_omniauth(auth)

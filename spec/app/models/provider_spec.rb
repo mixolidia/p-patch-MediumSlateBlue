@@ -7,6 +7,8 @@ RSpec.describe Provider, :type => :model do
     end
 
     it "uid must be unique" do
+      Provider.create(uid: "12345", name: "twitter")
+      expect(Provider.create(uid: "12345", name: "twitter").valid?).to eq false
     end
 
     it "provider name must be present" do

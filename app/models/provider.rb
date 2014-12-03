@@ -1,6 +1,8 @@
 class Provider < ActiveRecord::Base
   belongs_to :user
 
+  validates :uid, presence: true
+
   def self.from_omniauth(auth)
     where(name: auth["provider"], uid: auth["uid"], name: auth["info"]["name"]).first || create_from_omniauth(auth)
   end

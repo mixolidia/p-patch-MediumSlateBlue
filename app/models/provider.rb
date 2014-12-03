@@ -6,8 +6,12 @@ class Provider < ActiveRecord::Base
   end
 
   def self.create_from_omniauth(auth)
-    user = User.create_from_omniauth(auth)
-
+    #User.create_from_omniauth(auth)
+    user = User.new #cleaner way of doing this?
+    user.name = auth["info"]["name"]
+    user.administrator = false
+    user.save
+    
     create! do |provider|
       provider.name = auth["provider"]
       provider.uid = auth["uid"]

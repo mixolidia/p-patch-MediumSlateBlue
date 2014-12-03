@@ -6,12 +6,16 @@ class Provider < ActiveRecord::Base
   end
 
   def self.create_from_omniauth(auth)
-    user = User.create #this should be find user method or create
+    user = User.new #this should be find user method or create/also there must be a cleaner way of doing this?
+    user.name = auth["info"]["name"]
+    user.save
+
     create! do |provider|
       provider.name = auth["provider"]
       provider.uid = auth["uid"]
       provider.name = auth["info"]["name"]
       provider.user_id = user.id
     end
+
   end
 end

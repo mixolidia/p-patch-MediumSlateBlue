@@ -15,6 +15,14 @@ class Tool < ActiveRecord::Base
     self.available = true
   end
 
+  def self.available_tools
+    where(available: true)
+  end
+
+  def self.unavailable_tools
+    where(available: false)
+  end
+
   def set_due_date
     checkout_time = Time.now
     time_due = checkout_time + 1209600

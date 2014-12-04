@@ -1,13 +1,19 @@
 class ToolsController < ApplicationController
 
   def index
+    @available_tools = Tool.available_tools
+    @unavailable_tools = Tool.unavailable_tools
+  end
+
+  def manage
+    @tool = Tool.new
     @tools = Tool.all
   end
 
   def create
-    tool = Tool.new(params.require(:tool).permit(:name))
-    tool.init
-    if tool.save
+    @tool = Tool.new(params.require(:tool).permit(:name))
+    @tool.init
+    if @tool.save
       redirect_to tools_path
     else
       redirect_to tools_path, {:notice => "Unable to add new tool."}
@@ -43,5 +49,5 @@ class ToolsController < ApplicationController
       redirect_to tools_path, {:notice => "Unable to return tool"}
     end
   end
-  
+
 end

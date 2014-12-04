@@ -13,6 +13,9 @@ RSpec.describe ToolsController, :type => :controller do
       post :create, {tool:{name: "shovel"}}
       expect(Tool.find_by(name: "shovel").available).to eq true
     end
+
+    # it "only admin can add tools to library" do
+    # end
   end
 
   describe "POST destroy" do
@@ -22,6 +25,9 @@ RSpec.describe ToolsController, :type => :controller do
         post :destroy, {id: tool.id}
       }.to change{Tool.count}.by(-1)
     end
+
+    # it "only admin can remove tools from library" do
+    # end
   end
 
   describe "POST check_out" do

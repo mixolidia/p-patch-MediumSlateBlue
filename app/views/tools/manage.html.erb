@@ -1,0 +1,13 @@
+<h1>Add tool from library</h1>
+
+<%= form_for @tool, url: add_tool_path do |f| %>
+  <%=f.text_field :name, placeholder: "Tool" %>
+  <%=f.submit "Add" %>
+<% end %>
+
+<h1>Remove tool from library</h1>
+
+<% @tools.each do |tool| %>
+  <%= tool.name %>
+  <%= button_to "Remove", {:action => 'destroy', :id => tool.id }, :method => :delete %>
+<% end %>

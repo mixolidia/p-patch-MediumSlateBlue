@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root 'home#index'
   get 'auth/twitter/callback',        to: 'sessions#create'
   get 'signout',                      to: 'sessions#destroy',       as: :signout
+
+  #tools
   get 'tools/',                       to: 'tools#index',            as: :tools
   post 'tools/add',                   to: 'tools#create',           as: :add_tool
   delete 'tools/remove',              to: 'tools#destroy',          as: :remove_tool

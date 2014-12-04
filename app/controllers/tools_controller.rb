@@ -22,7 +22,8 @@ class ToolsController < ApplicationController
     tool = Tool.find(params[:id])
     tool.available = false
     tool.borrower = current_user.id
-    if tool.save
+    due_date
+    if tool.save!
       redirect_to tools_path, {:notice => "Tool checked out!"}
     else
       redirect_to tools_path, {:notice => "Unable to check out tool"}
@@ -38,5 +39,11 @@ class ToolsController < ApplicationController
     else
       redirect_to tools_path, {:notice => "Unable to return tool"}
     end
+  end
+
+  def due_date
+    checkout_time = Time.now
+    time_due = checkout_time + 1209600
+    tool.due_date = time_due
   end
 end

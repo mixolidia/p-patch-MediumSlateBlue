@@ -7,7 +7,12 @@ RSpec.describe Tool, :type => :model do
     end
 
     it "availability should be a boolean" do
-      expect(Tool.create(name: "shovel", available: 3).valid?).to eq false
+      expect(Tool.create(name: "shovel", available: false).valid?).to eq true
+      expect(Tool.create(name: "shovel", available: true).valid?).to eq true
     end
+
+    # it "due date must be a datetime object" do
+    #   expect(Tool.create(name: "shovel", available: false, due_date: "Friday").valid?).to eq false
+    # end
   end
 end

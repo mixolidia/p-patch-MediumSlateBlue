@@ -38,4 +38,8 @@ class Tool < ActiveRecord::Base
     self.available = true
     self.borrower = nil
   end
+
+  def belongs_to_user?(user)
+    self.borrower == user
+  end
 end

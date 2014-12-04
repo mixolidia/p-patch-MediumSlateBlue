@@ -4,7 +4,7 @@
   <%= unavailable_tool.name %>
   <%= format_time(unavailable_tool.due_date) %>
   <%= unavailable_tool.id %>
-  <% if unavailable_tool.borrower == current_user.id %>
+  <% if unavailable_tool.belongs_to_user?(current_user.id) %>
     <%= button_to "Return", { :action => 'check_in', :id => unavailable_tool.id }, :method => :check_in %>
   <% end %>
 <% end %>

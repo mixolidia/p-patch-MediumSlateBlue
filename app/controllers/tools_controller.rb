@@ -1,7 +1,7 @@
 class ToolsController < ApplicationController
   def create
     tool = Tool.new(params.require(:tool).permit(:name))
-    tool.available = true
+    tool.init
     if tool.save
       redirect_to tools_path
     else
@@ -20,10 +20,9 @@ class ToolsController < ApplicationController
 
   def check_out
     tool = Tool.find(params[:id])
-    tool.available = false
-    tool.borrower = current_user.id
-    due_date
-    if tool.save!
+    tool.set_due_date
+    tool.check_out(current_user)
+    if tool.save
       redirect_to tools_path, {:notice => "Tool checked out!"}
     else
       redirect_to tools_path, {:notice => "Unable to check out tool"}
@@ -32,18 +31,11 @@ class ToolsController < ApplicationController
 
   def check_in
     tool = Tool.find(params[:id])
-    tool.available = true
-    tool.borrower = nil
+    tool.check_in(current_user)
     if tool.save
       redirect_to tools_path, {:notice => "Tool returned!"}
     else
       redirect_to tools_path, {:notice => "Unable to return tool"}
     end
-  end
-
-  def due_date
-    checkout_time = Time.now
-    time_due = checkout_time + 1209600
-    tool.due_date = time_due
   end
 end

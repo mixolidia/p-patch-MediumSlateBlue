@@ -33,6 +33,15 @@ ActiveRecord::Schema.define(version: 20141204200703) do
     t.integer  "user_id"
   end
 
+  create_table "tools", force: true do |t|
+    t.string   "name"
+    t.integer  "borrower"
+    t.boolean  "available"
+    t.datetime "due_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.string   "name"
     t.boolean  "administrator"

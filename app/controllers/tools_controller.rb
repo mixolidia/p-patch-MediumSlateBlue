@@ -1,4 +1,9 @@
 class ToolsController < ApplicationController
+
+  def index
+    @tools = Tool.all
+  end
+
   def create
     tool = Tool.new(params.require(:tool).permit(:name))
     tool.init
@@ -38,4 +43,5 @@ class ToolsController < ApplicationController
       redirect_to tools_path, {:notice => "Unable to return tool"}
     end
   end
+  
 end

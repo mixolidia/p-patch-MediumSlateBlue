@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   #tools
   get 'tools/',                       to: 'tools#index',            as: :tools
+  get 'tools/manage',                 to: 'tools#manage',           as: :manage_tools
   post 'tools/add',                   to: 'tools#create',           as: :add_tool
   delete 'tools/remove',              to: 'tools#destroy',          as: :remove_tool
   post 'tools/checkout',              to: 'tools#check_out',        as: :check_out

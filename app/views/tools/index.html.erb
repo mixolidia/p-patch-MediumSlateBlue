@@ -1,16 +1,18 @@
-<h1>Checked out tools</h2>
+<h1>Tools Currently Checked Out</h1>
 
 <% @unavailable_tools.each do |unavailable_tool| %>
   <%= unavailable_tool.name %>
   <%= format_time(unavailable_tool.due_date) %>
   <% if unavailable_tool.belongs_to_user?(current_user.id) %>
-    <%= button_to "Return", { :action => 'check_in', :id => unavailable_tool.id }, :method => :check_in %>
+    <%= button_to "Return", { :action => 'check_in', :id => unavailable_tool.id },
+    :method => :check_in, class: "btn btn-default"  %>
   <% end %>
 <% end %>
 
-<h1>Available tools</h2>
+<h1>Available Tools</h1>
 
 <% @available_tools.each do |available_tool| %>
   <%= available_tool.name %>
-  <%= button_to "Check Out", { :action => 'check_out', :id => available_tool.id }, :method => :check_out %>
+  <%= button_to "Check Out", { :action => 'check_out', :id => available_tool.id },
+  :method => :check_out, class: "btn btn-default" %>
 <% end %>

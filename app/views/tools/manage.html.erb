@@ -1,6 +1,6 @@
 <% if current_user.user_is_admin? %>
 
-  <h1>ADD TOOL TO LIBRARY</h1>
+  <h1>Add Tool to Library</h1>
 
   <%= button_to 'Add another field', id: "add_field" %>
   <%= form_for @tool, url: add_tool_path do |f| %>
@@ -13,7 +13,7 @@
   <% end %>
 
 
-  <h1>REMOVE TOOL FROM LIBRARY</h1>
+  <h1>Remove Tool from Library</h1>
 
   <% @tools.each do |tool| %>
     <%= tool.name %>

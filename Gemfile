@@ -39,6 +39,7 @@ end
 
 gem 'whenever', :require => false
 
+gem 'httparty', '~> 0.13.3'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

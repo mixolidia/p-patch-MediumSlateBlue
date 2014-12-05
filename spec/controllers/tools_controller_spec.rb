@@ -92,10 +92,24 @@ RSpec.describe ToolsController, :type => :controller do
       end
 
       # it "user cannot check out more than 3 tools at a time" do
+      #   user = User.create!
+      #   session[:user_id] = user.id
       #
+      #   tool = Tool.create!(name: "shovel", available: true, due_date: nil)
+      #   post :check_out, {id: tool.id, available: tool.available}
+      #
+      #   tool2 = Tool.create!(name: "hose", available: true, due_date: nil)
+      #   post :check_out, {id: tool2.id, available: tool2.available}
+      #
+      #   tool3 = Tool.create!(name: "watering can", available: true, due_date: nil)
+      #   post :check_out, {id: tool3.id, available: tool3.available}
+      #
+      #   tool4 = Tool.create!(name: "rake", available: true, due_date: nil)
+      #   post :check_out, {id: tool4.id, available: tool4.available}
+      #
+      #   expect(tool.reload.borrower).to eq nil
       # end
     end
-
 
     context "if there is no valid current user" do
       it "a user cannot check out a tool and redirected" do
@@ -126,17 +140,6 @@ RSpec.describe ToolsController, :type => :controller do
 
         expect(tool.reload.available).to eq true
       end
-
-      # it "tool can only be checked in if it's been checked out" do
-      #   user = User.create!
-      #   session[:user_id] = user.id
-      #
-      #   tool = Tool.create!(name: "shovel", available: true, due_date: nil, borrower: nil)
-      #   post :check_in, {id: tool.id}
-      #
-      #   #expect error??
-      #   #expect(tool.reload.available).to eq true
-      # end
 
       it "tool is checked back in" do
         user = User.create!

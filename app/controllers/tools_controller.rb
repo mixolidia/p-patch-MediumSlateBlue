@@ -13,6 +13,7 @@ class ToolsController < ApplicationController
 
   def create
     @tool = Tool.new(params.require(:tool).permit(:name))
+    raise
     @tool.init
     if @tool.save
       redirect_to manage_tools_path

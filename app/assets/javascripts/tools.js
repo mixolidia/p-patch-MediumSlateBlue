@@ -11,8 +11,7 @@ $(function() {
   $("#add_field").click(function(event) {
     event.preventDefault();
     //find a way to get each of these name values different for params
-    var $emptyField = $('<div><input class="tool_name" "name"="tool[name]" placeholder="Tool" type="text">
-    <a href="#" class="remove_field">Remove</a></div>');
+    var $emptyField = $('<div><input class="tool_name" "name"="tool[name]" placeholder="Tool" type="text"><a href="#" class="remove_field">Remove</a></div>');
     $(".input_field form").append($emptyField);
     i++;
   });

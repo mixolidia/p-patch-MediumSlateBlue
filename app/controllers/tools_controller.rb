@@ -2,6 +2,7 @@ class ToolsController < ApplicationController
   before_action :require_admin, only: [:create, :destroy]
 
   def index
+    @tools = Tool.all
     @available_tools = Tool.available_tools
     @unavailable_tools = Tool.unavailable_tools
   end
@@ -13,7 +14,6 @@ class ToolsController < ApplicationController
 
   def create
     @tool = Tool.new(params.require(:tool).permit(:name))
-    raise
     @tool.init
     if @tool.save
       redirect_to manage_tools_path

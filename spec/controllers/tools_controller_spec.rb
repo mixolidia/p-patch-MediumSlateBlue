@@ -120,7 +120,7 @@ RSpec.describe ToolsController, :type => :controller do
 
         expect(session[:user_id]).to eq nil
         expect(tool.reload.available).to eq true
-        #expect(subject).to redirect_to root_path
+        expect(subject).to redirect_to tools_path
       end
     end
   end

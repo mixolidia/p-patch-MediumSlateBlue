@@ -1,5 +1,6 @@
 class ToolsController < ApplicationController
   before_action :require_admin, only: [:create, :destroy]
+  before_action :require_user, only: [:check_in, :check_out]
 
   def index
     @tools = Tool.all
@@ -58,8 +59,15 @@ class ToolsController < ApplicationController
 
   def require_admin
     unless current_user.user_is_admin?
-      flash[:error] = "You must be an administrator to access this section"
+      flash[:error] = "You must be an administrator to access this section."
       redirect_to root_path # halts request cycle
+    end
+  end
+
+  def require_user
+    unless current_user
+      flash[:error] = "You must be a member to check tools in and out."
+      redirect_to root_path
     end
   end
 

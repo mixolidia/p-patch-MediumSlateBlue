@@ -1,8 +1,18 @@
-<%= image_tag( current_user.image, alt: "Member Image") %>
-<h3><%= current_user.name %>'s Profile</h3>
+<div ="profile_header"
+  <%= image_tag( current_user.image, alt: "Member Image") %>
+  <h3><%= current_user.name %>'s Profile</h3>
+</div>
 
-Tools
+<div class="tools">
+  Tools
+</div>
 
-Events
+<div class="events">
+  Events
+</div>
 
-Request Admin Status
+<% if current_user.user_is_admin? %>
+  <div>
+    Admin Tools
+  </div>
+<% end %>

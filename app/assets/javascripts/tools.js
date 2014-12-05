@@ -8,29 +8,10 @@
 $(function() {
   $("#add_field").click(function(event) {
     event.preventDefault();
-    var $emptyField = $("<div><input id='tool_name' name='tool[name]' placeholder='Tool' type='text'></div>");
+    var $emptyField = $("<div><input id='tool_name' name='tool[name]' placeholder='Tool' type='text'><a href='#' class='remove_field'>Remove</a></div>");
     $("#input_field").append($emptyField);
   });
-
+  $("#input_field").on("click",".remove_field", function(event){ //user click on remove text
+    event.preventDefault(); $(this).parent('div').remove();
+  });
 });
-
-
-
-// $(document).ready(function() {
-//   var max_fields      = 10; //maximum input boxes allowed
-//   var wrapper         = $("#input_field"); //Fields wrapper
-//   var add_button      = $("#add_field"); //Add button ID
-//
-//   var x = 1; //initlal text box count
-//   add_button.click(function(event){ //on add input button click
-//     event.preventDefault();
-//     if(x < max_fields){ //max input box allowed
-//       x++; //text box increment
-//       $(wrapper).append("<%=f.text_field :name, placeholder: 'Tool' %>"); //add input box
-//     }
-//   });
-//
-//   $(wrapper).on("click","#remove_field", function(event){ //user click on remove text
-//     event.preventDefault(); $(this).parent('div').remove(); x--;
-//   });
-// });

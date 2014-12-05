@@ -11,11 +11,11 @@
 
   <% @tools.each do |tool| %>
     <%= tool.name %>
-    <%= button_to "Remove", {:action => 'destroy', :id => tool.id }, :method => :delete %>
+    <%= button_to "Remove", {:action => 'destroy', :id => tool.id, :available => tool.available }, :method => :delete %>
   <% end %>
 
 <% else %>
 
-  <h1>You must be an site administrator to add and remove tools.</h1>
+  <h1>You must be a site administrator to add and remove tools.</h1>
 
 <% end %>

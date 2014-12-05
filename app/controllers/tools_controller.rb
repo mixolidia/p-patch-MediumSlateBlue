@@ -1,4 +1,5 @@
 class ToolsController < ApplicationController
+  before_action :require_admin, only: [:create, :destroy]
 
   def index
     @available_tools = Tool.available_tools
@@ -16,6 +17,7 @@ class ToolsController < ApplicationController
     if @tool.save
       redirect_to tools_path
     else
+      raise
       redirect_to tools_path, {:notice => "Unable to add new tool."}
     end
   end
@@ -30,11 +32,15 @@ class ToolsController < ApplicationController
   end
 
   def check_out
-    tool = Tool.find(params[:id])
-    tool.set_due_date
-    tool.check_out(current_user)
-    if tool.save
-      redirect_to tools_path, {:notice => "Tool checked out!"}
+    tool = Tool.where("id = ? AND available = ?", params[:id], params[:available])
+    if !tool.nil
+      tool.set_due_date
+      tool.check_out(current_user)
+      if tool.save
+        redirect_to tools_path, {:notice => "Tool checked out!"}
+      else
+        redirect_to tools_path, {:notice => "Database Error"}
+      end
     else
       redirect_to tools_path, {:notice => "Unable to check out tool"}
     end
@@ -47,6 +53,13 @@ class ToolsController < ApplicationController
       redirect_to tools_path, {:notice => "Tool returned!"}
     else
       redirect_to tools_path, {:notice => "Unable to return tool"}
+    end
+  end
+
+  def require_admin
+    unless current_user.user_is_admin?(current_user)
+      flash[:error] = "You must be an administrator to access this section"
+      redirect_to root_path # halts request cycle
     end
   end
 

@@ -4,20 +4,30 @@ RSpec.describe ToolsController, :type => :controller do
 
   describe "POST create" do
     it "creates a new tool in the database" do
+      user = User.create!
+      session[:user_id] = user.id
+      user.administrator = true
+      user.save
+
       expect {
         post :create, {tool:{name: "shovel"}}
       }.to change{Tool.count}.by(1)
     end
 
     it "sets available attribute to true" do
+      user = User.create!
+      session[:user_id] = user.id
+      user.administrator = true
+      user.save
+
       post :create, {tool:{name: "shovel"}}
       expect(Tool.find_by(name: "shovel").available).to eq true
     end
 
     it "only admin can add tools to library" do
       user = User.create!
-      user.administrator = false
       session[:user_id] = user.id
+      user.administrator = false
 
       expect {
         post :create, {tool:{name: "shovel"}}
@@ -27,6 +37,11 @@ RSpec.describe ToolsController, :type => :controller do
 
   describe "POST destroy" do
     it "removes a tool from the database" do
+      user = User.create!
+      session[:user_id] = user.id
+      user.administrator = true
+      user.save
+
       tool = Tool.create(name: "shovel", available: false)
       expect {
         post :destroy, {id: tool.id}
@@ -51,7 +66,7 @@ RSpec.describe ToolsController, :type => :controller do
         session[:user_id] = user.id
 
         tool = Tool.create!(name: "shovel", available: true, due_date: nil)
-        post :check_out, {id: tool.id}
+        post :check_out, {id: tool.id, available: tool.available}
 
         expect(tool.reload.available).to eq false
       end
@@ -61,7 +76,7 @@ RSpec.describe ToolsController, :type => :controller do
         session[:user_id] = user.id
 
         tool = Tool.create!(name: "shovel", available: false, due_date: nil, borrower: 7)
-        post :check_out, {id: tool.id}
+        post :check_out, {id: tool.id, available: tool.available}
 
         expect(tool.reload.borrower).to eq 7
       end
@@ -71,7 +86,7 @@ RSpec.describe ToolsController, :type => :controller do
         session[:user_id] = user.id
 
         tool = Tool.create!(name: "shovel", available: true, due_date: nil)
-        post :check_out, {id: tool.id}
+        post :check_out, {id: tool.id, available: tool.available}
 
         expect(tool.reload.due_date).to_not eq nil
       end

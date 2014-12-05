@@ -1,19 +1,20 @@
 Rails.application.routes.draw do
 
   root 'home#index'
-  get 'auth/twitter/callback',        to: 'sessions#create'
-  get 'signout',                      to: 'sessions#destroy',       as: :signout
+  get 'auth/twitter/callback',      to: 'sessions#create'
+  get 'signout',                    to: 'sessions#destroy',     as: :signout
 
 # users
-  get '/profile',                     to: 'users#show',             as: :profile
+  get '/profile',                   to: 'users#show',           as: :profile
+  get '/admin',                     to: 'users#admin',           as: :admin
 
   #tools
-  get 'tools/',                       to: 'tools#index',            as: :tools
-  get 'tools/manage',                 to: 'tools#manage',           as: :manage_tools
-  post 'tools/add',                   to: 'tools#create',           as: :add_tool
-  delete 'tools/remove',              to: 'tools#destroy',          as: :remove_tool
-  post 'tools/checkout',              to: 'tools#check_out',        as: :check_out
-  post 'tools/checkin',               to: 'tools#check_in',         as: :check_in
+  get 'tools/',                     to: 'tools#index',          as: :tools
+  get 'tools/manage',               to: 'tools#manage',         as: :manage_tools
+  post 'tools/add',                 to: 'tools#create',         as: :add_tool
+  delete 'tools/remove',            to: 'tools#destroy',        as: :remove_tool
+  post 'tools/checkout',            to: 'tools#check_out',      as: :check_out
+  post 'tools/checkin',             to: 'tools#check_in',       as: :check_in
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

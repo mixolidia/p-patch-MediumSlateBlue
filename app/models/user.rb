@@ -21,4 +21,7 @@ class User < ActiveRecord::Base
     @tools = Tool.where( borrower: current_user.id )
   end
 
+  def admin
+  end
+
 end

@@ -2,7 +2,24 @@
   <h3>Admin Tools</h3>
 </div>
 
-<div class="current_members">
-  
+<div class="current_members list-group">
+  <table>
+    <% @members.each do |m| %>
+      <li><%= m.image  %> &nbsp; <%= m.name  %> &nbsp; <%= m.administrator  %></li>
+
+      <%= check_box_tag class: "badge"   m.administrator  %>
+
+    <% end %>
+  </table>
+
+  <%= m.administrator  %>
+
+  create_table "users", force: true do |t|
+  t.string   "name"
+  t.boolean  "administrator"
+  t.datetime "created_at"
+  t.datetime "updated_at"
+  t.string   "image"
+  end
 
 </div>

@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
 
   root 'home#index'
-  get 'auth/twitter/callback',      to: 'sessions#create'
-  get 'signout',                    to: 'sessions#destroy',     as: :signout
+  get  'auth/twitter/callback',     to: 'sessions#create'
+  get  'signout',                   to: 'sessions#destroy',     as: :signout
 
-# users
-  get '/profile',                   to: 'users#show',           as: :profile
-  get '/admin',                     to: 'users#admin',           as: :admin
+  # users
+  get   '/profile',                 to: 'users#show',           as: :profile
+  get   '/admin',                   to: 'users#admin',          as: :admin
+  patch '/admin/yes',               to: 'users#make_admin'
 
   #tools
   get 'tools/',                     to: 'tools#index',          as: :tools

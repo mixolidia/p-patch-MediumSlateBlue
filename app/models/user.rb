@@ -18,10 +18,11 @@ class User < ActiveRecord::Base
   end
 
   def my_tools
-    @tools = Tool.where( borrower: current_user.id )
+    @tools = Tool.where( borrower: self.id )
   end
 
-  def admin
+
+  def members
   end
 
 end

@@ -39,6 +39,9 @@ end
 
 gem 'whenever', :require => false
 
+# For tables
+gem 'table_cloth'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

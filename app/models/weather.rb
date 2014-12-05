@@ -11,14 +11,14 @@ class Weather
 
   def forecast
     forecast_parsed = HTTParty.get("http://api.wunderground.com/api/0bed9de11c8446fe/forecast10day/q/WA/Seattle.json").parsed_response
+    period = 1
 
-    #loop 
-    day1_icon = forecast_parsed["forecast"]["txt_forecast"]["forecastday"][1]["icon"]
-    day1_title = forecast_parsed["forecast"]["txt_forecast"]["forecastday"][1]["title"]
-    day1_fcttext = forecast_parsed["forecast"]["txt_forecast"]["forecastday"][1]["fcttext"]
-    "#{day1_title}"
-    "#{day1_icon}"
-    "#{day1_fcttext}"
+    10.times do
+      day_icon = forecast_parsed["forecast"]["txt_forecast"]["forecastday"][period]["icon"]
+      day_title = forecast_parsed["forecast"]["txt_forecast"]["forecastday"][period]["title"]
+      day_fcttext = forecast_parsed["forecast"]["txt_forecast"]["forecastday"][period]["fcttext"]
+      period += 1
+    end
   end
 
 end

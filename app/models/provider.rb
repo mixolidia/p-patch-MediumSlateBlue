@@ -11,14 +11,15 @@ class Provider < ActiveRecord::Base
   def self.create_from_omniauth(auth)
     #User.create_from_omniauth(auth)
     #cleaner way of doing this?
-    if !current_user
+    # if !current_user
       user = User.new
       user.name = auth["info"]["name"]
+      user.image = auth["info"]["image"]
       user.administrator = false
       user.save
-    else
-      user.id = current_user.id
-    end
+    # else
+    #   user.id = current_user.id
+    # end
 
     create! do |provider|
       provider.name = auth["provider"]

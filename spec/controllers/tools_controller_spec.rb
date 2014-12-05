@@ -90,6 +90,10 @@ RSpec.describe ToolsController, :type => :controller do
 
         expect(tool.reload.due_date).to_not eq nil
       end
+
+      # it "user cannot check out more than 3 tools at a time" do
+      #
+      # end
     end
 
 
@@ -113,22 +117,26 @@ RSpec.describe ToolsController, :type => :controller do
         user = User.create!
         session[:user_id] = user.id
 
-        tool = Tool.create!(name: "shovel", available: false, due_date: Time.now, borrower: user.id)
+        tool = Tool.create!(
+                  name: "shovel",
+                  available: false,
+                  due_date: Time.now,
+                  borrower: user.id)
         post :check_in, {id: tool.id}
 
         expect(tool.reload.available).to eq true
       end
 
-      it "tool can only be checked in if it's been checked out" do
-        user = User.create!
-        session[:user_id] = user.id
-
-        tool = Tool.create!(name: "shovel", available: true, due_date: nil, borrower: nil)
-        post :check_in, {id: tool.id}
-
-        #expect error??
-        #expect(tool.reload.available).to eq true
-      end
+      # it "tool can only be checked in if it's been checked out" do
+      #   user = User.create!
+      #   session[:user_id] = user.id
+      #
+      #   tool = Tool.create!(name: "shovel", available: true, due_date: nil, borrower: nil)
+      #   post :check_in, {id: tool.id}
+      #
+      #   #expect error??
+      #   #expect(tool.reload.available).to eq true
+      # end
 
       it "tool is checked back in" do
         user = User.create!

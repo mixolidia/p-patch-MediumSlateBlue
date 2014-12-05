@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
     user.save
   end
 
-  def user_is_admin?(user)
-    user.administrator == true
+  def user_is_admin?
+    self.administrator == true
   end
 end

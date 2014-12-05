@@ -15,19 +15,19 @@ class ToolsController < ApplicationController
     @tool = Tool.new(params.require(:tool).permit(:name))
     @tool.init
     if @tool.save
-      redirect_to tools_path
+      redirect_to manage_tools_path
     else
       raise
-      redirect_to tools_path, {:notice => "Unable to add new tool."}
+      redirect_to manage_tools_path, {:notice => "Unable to add new tool."}
     end
   end
 
   def destroy
     tool = Tool.find(params[:id])
     if tool.destroy
-      redirect_to tools_path
+      redirect_to manage_tools_path
     else
-      redirect_to tools_path, {:notice => "Unable to remove tool."}
+      redirect_to manage_tools_path, {:notice => "Unable to remove tool."}
     end
   end
 
@@ -57,7 +57,7 @@ class ToolsController < ApplicationController
   end
 
   def require_admin
-    unless current_user.user_is_admin?(current_user)
+    unless current_user.user_is_admin?
       flash[:error] = "You must be an administrator to access this section"
       redirect_to root_path # halts request cycle
     end

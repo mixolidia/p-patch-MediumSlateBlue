@@ -11,4 +11,9 @@ class User < ActiveRecord::Base
   def user_is_admin?
     self.administrator == true
   end
+
+  def admin(current_user)
+    user.administrator = true
+  end
+
 end

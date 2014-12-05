@@ -17,7 +17,6 @@ class ToolsController < ApplicationController
     if @tool.save
       redirect_to manage_tools_path
     else
-      raise
       redirect_to manage_tools_path, {:notice => "Unable to add new tool."}
     end
   end

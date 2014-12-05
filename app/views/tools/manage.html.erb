@@ -1,13 +1,19 @@
 <% if current_user.user_is_admin? %>
 
-  <h1>Add tool from library</h1>
+  <h1>ADD TOOL TO LIBRARY</h1>
 
+  <%= button_to 'Add another field', id: "add_field" %>
   <%= form_for @tool, url: add_tool_path do |f| %>
-    <%=f.text_field :name, placeholder: "Tool" %>
-    <%=f.submit "Add" %>
+  <div id="input_field">
+    <div>
+      <%=f.text_field :name, placeholder: "Tool" %>
+    </div>
+  </div>
+    <%=f.submit "Add to library" %>
   <% end %>
 
-  <h1>Remove tool from library</h1>
+
+  <h1>REMOVE TOOL FROM LIBRARY</h1>
 
   <% @tools.each do |tool| %>
     <%= tool.name %>
@@ -16,6 +22,7 @@
 
 <% else %>
 
-  <h1>You must be a site administrator to add and remove tools.</h1>
+  <h1>SORRY!</h1>
+  <div>You must be a site administrator to add and remove tools.</div>
 
 <% end %>

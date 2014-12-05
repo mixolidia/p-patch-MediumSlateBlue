@@ -32,8 +32,8 @@ class ToolsController < ApplicationController
   end
 
   def check_out
-    tool = Tool.where("id = ? AND available = ?", params[:id], params[:available])
-    if !tool.nil
+    tool = Tool.where("id = ? AND available = true", params[:id]).first
+    if tool
       tool.set_due_date
       tool.check_out(current_user)
       if tool.save

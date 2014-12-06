@@ -5,15 +5,17 @@
 //TOOLS
 //manage.html.erb, append input field
 
-$(function() {
+function addTextField() {
+  var $emptyField = $('<div><input class="tool_name" name="tool[name][]" placeholder="Tool" type="text"><a href="#" class="remove_field">Remove</a></div>');
+  $(".input_field form").append($emptyField);
+}
 
-  var i = 1;
+$(function() {
+  addTextField();
   $("#add_field").click(function(event) {
     event.preventDefault();
     //find a way to get each of these name values different for params
-    var $emptyField = $('<div><input class="tool_name" "name"="tool[name]" placeholder="Tool" type="text"><a href="#" class="remove_field">Remove</a></div>');
-    $(".input_field form").append($emptyField);
-    i++;
+    addTextField();
   });
 
   $(".input_field").on("click",".remove_field", function(event){ //user click on remove text

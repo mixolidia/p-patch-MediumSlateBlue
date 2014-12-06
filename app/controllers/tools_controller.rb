@@ -14,13 +14,13 @@ class ToolsController < ApplicationController
   end
 
   def create
-    @tool = Tool.new(params.require(:tool).permit(:name))
-    @tool.init
-    if @tool.save
-      redirect_to manage_tools_path
-    else
-      redirect_to manage_tools_path, {:notice => "Unable to add new tool."}
+    tool_params = params[:tool][:name]
+    tool_params.each do |tool|
+      @tool = Tool.new(name: tool)
+      @tool.init
+      @tool.save
     end
+    redirect_to manage_tools_path
   end
 
   def destroy

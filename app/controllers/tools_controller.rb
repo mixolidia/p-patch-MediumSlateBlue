@@ -23,6 +23,7 @@ class ToolsController < ApplicationController
         failed_tools<<tool_name
       end
     end
+    #each with if inside can generally be transformed into select
     #failed_tools = saved_tools.select {|key, value| value == false}.keys #reject/value
     if !failed_tools.empty?
       redirect_to manage_tools_path,

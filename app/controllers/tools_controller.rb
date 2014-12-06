@@ -14,13 +14,22 @@ class ToolsController < ApplicationController
   end
 
   def create
+    failed_tools = []
     tool_params = params[:tool][:name]
-    tool_params.each do |tool|
-      @tool = Tool.new(name: tool)
-      @tool.init
-      @tool.save
+    tool_params.each do |tool_name|
+      tool = Tool.new(name: tool_name)
+      tool.init
+      if tool.save == false
+        failed_tools<<tool_name
+      end
     end
-    redirect_to manage_tools_path
+    #failed_tools = saved_tools.select {|key, value| value == false}.keys #reject/value
+    if !failed_tools.empty?
+      redirect_to manage_tools_path,
+        {:notice => "Unable to save #{failed_tools.join(", ")}."}
+    else
+      redirect_to manage_tools_path
+    end
   end
 
   def destroy

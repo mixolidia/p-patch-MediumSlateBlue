@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :providers
+  has_many :tools
 
   def self.create_from_omniauth(auth)
     user = User.new #cleaner way of doing this?
@@ -12,8 +13,12 @@ class User < ActiveRecord::Base
     self.administrator == true
   end
 
-  def admin(current_user)
-    user.administrator = true
+  def make_admin
+    self.administrator = true
+  end
+
+  def my_tools
+    @tools = Tool.where( borrower: current_user.id )
   end
 
 end

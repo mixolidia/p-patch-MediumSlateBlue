@@ -1,4 +1,6 @@
 class Tool < ActiveRecord::Base
+  belongs_to :user
+  
   validates :name, presence: true
   validates :available, :inclusion => {:in => [true, false]}
   validate :due_date_is_date?

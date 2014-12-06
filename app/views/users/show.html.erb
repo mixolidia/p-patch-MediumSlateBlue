@@ -1,10 +1,16 @@
-<div ="profile_header"
-  <%= image_tag( current_user.image, alt: "Member Image") %>
+<div ="profile_header">
+  <%= image_tag( current_user.image, alt: " #{current_user.name}'s member image") %>
   <h3><%= current_user.name %>'s Profile</h3>
 </div>
 
 <div class="tools">
-  Tools
+  Tools You've Checked Out:
+
+    <% @tools.each do |t| %>
+      <ul>
+        <li><%= t.name %> &nbsp; <%= t.due_date %></li>
+      </ul>
+    <% end %>
 </div>
 
 <div class="events">

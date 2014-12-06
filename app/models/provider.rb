@@ -25,6 +25,7 @@ class Provider < ActiveRecord::Base
       provider.name = auth["provider"]
       provider.uid = auth["uid"]
       provider.name = auth["info"]["name"]
+      provider.user_name = auth["info"]["screen_name"]
       provider.user_id = user.id
     end
 

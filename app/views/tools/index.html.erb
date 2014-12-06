@@ -1,17 +1,6 @@
-<h1>Checked out tools</h2>
 
-<% @unavailable_tools.each do |unavailable_tool| %>
-  <%= unavailable_tool.name %>
-  <%= format_time(unavailable_tool.due_date) %>
-  <%= unavailable_tool.id %>
-  <% if unavailable_tool.belongs_to_user?(current_user.id) %>
-    <%= button_to "Return", { :action => 'check_in', :id => unavailable_tool.id }, :method => :check_in %>
-  <% end %>
-<% end %>
-
-<h1>Available tools</h2>
-
-<% @available_tools.each do |available_tool| %>
-  <%= available_tool.name %>
-  <%= button_to "Check Out", { :action => 'check_out', :id => available_tool.id }, :method => :check_out %>
+<% if current_user.nil? %>
+  <%= render "shared/tools_all" %>
+<% else %>
+  <%= render "shared/tools_user" %>
 <% end %>

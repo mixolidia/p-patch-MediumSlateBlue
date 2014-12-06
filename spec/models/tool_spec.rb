@@ -10,9 +10,5 @@ RSpec.describe Tool, :type => :model do
       expect(Tool.create(name: "shovel", available: false).valid?).to eq true
       expect(Tool.create(name: "shovel", available: true).valid?).to eq true
     end
-
-    it "due date must be a datetime object" do
-      #expect(Tool.create(name: "shovel", available: true, due_date: Time.now).valid?).to eq true
-    end
   end
 end

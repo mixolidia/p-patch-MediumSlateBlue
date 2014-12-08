@@ -1,6 +1,19 @@
-<h2 class ="fornow">News here motherfuckers...</h2>
+<div class="head_news">
+  <h2 class ="fornow">News here motherfuckers...</h2>
+</div><!--head_news-->
 
-<nav>
+<% if current_user.user_is_admin? %>
+<div class="create_news_post">
+  <%= link_to "Post News", post_news_path %>
+</div>
+<% end %>
+
+
+<div class="news_posts">
+
+
+</div><!--news_posts-->
+<nav class="bottom_nav">
   <ul class="pager">
     <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Older</a></li>
     <li class="next"><a href="#">Newer <span aria-hidden="true">&rarr;</span></a></li>

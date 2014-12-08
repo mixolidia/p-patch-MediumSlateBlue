@@ -9,7 +9,13 @@ Rails.application.routes.draw do
   get   '/admin',                   to: 'users#admin',          as: :admin
   patch '/admin/yes',               to: 'users#make_admin'
 
-  #tools
+  # news
+  get '/news',                      to: 'posts#posts',           as: :news
+
+  # events
+  get '/events',                    to: 'events#events',         as: :events
+
+  # tools
   get 'tools/',                     to: 'tools#index',          as: :tools
   get 'tools/manage',               to: 'tools#manage',         as: :manage_tools
   post 'tools/add',                 to: 'tools#create',         as: :add_tool

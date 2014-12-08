@@ -1,18 +1,16 @@
-<div class="admin_header">
+<div ="admin_header">
   <h3>Admin Tools</h3>
 </div>
 
 <div class="current_members list-group">
-  <!-- <#%= simple_table_for @users, with: UserTable %> -->
+  Members List
+  <table>
+    <th> </th> <th> </th> <th>Admin?</th>
+    <% @members.each do |m| %>
 
-  <!-- <#%= m.administrator  %>
+      <tr><td><%= image_tag( current_user.image, alt: " #{current_user.name}'s member image") %></td> <td><%= m.name  %></td> <td> <%= check_box(:user, :administrator, {checked: m.user_is_admin?})  %></td></tr>
 
-  create_table "users", force: true do |t|
-  t.string   "name"
-  t.boolean  "administrator"
-  t.datetime "created_at"
-  t.datetime "updated_at"
-  t.string   "image"
-  end -->
 
+    <% end %>
+  </tble>
 </div>

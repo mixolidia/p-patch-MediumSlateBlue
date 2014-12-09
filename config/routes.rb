@@ -10,12 +10,14 @@ Rails.application.routes.draw do
   patch '/admin/yes',                 to: 'users#make_admin'
 
   # news
-  get   '/news',                      to: 'posts#posts',           as: :news
-  get   '/post-news',                 to: 'posts#create',          as: :post_news
-  patch '/edit-news',                 to: 'posts#edit',            as: :edit_news
+  get   '/news',                      to: 'posts#posts',          as: :news
+  post  '/post-news',                 to: 'posts#create',         as: :create_news
+  get   '/make_news',                 to: 'posts#new',            as: :post_news
+  patch '/edit-news',                 to: 'posts#edit',           as: :edit_news
+  get   '/news/:title',               to: 'posts#post',           as: :post
 
   # events
-  get '/calendar',                    to: 'events#calendar',       as: :calendar
+  get '/calendar',                    to: 'events#calendar',      as: :calendar
 
   # tools
   get 'tools/',                     to: 'tools#index',          as: :tools

@@ -6,11 +6,11 @@
 <div class="tools">
   Tools You've Checked Out:
 
-    <% @tools.each do |t| %>
-      <ul>
-        <li><%= t.name %> &nbsp; <%= t.due_date %></li>
-      </ul>
-    <% end %>
+  <% current_user.my_tools.each do |t| %>
+    <ul>
+      <li><%= t.name %> &nbsp; <%= t.due_date %></li>
+    </ul>
+  <% end %>
 </div>
 
 <div class="events">
@@ -19,6 +19,6 @@
 
 <% if current_user.user_is_admin? %>
   <div class="admin_tools">
-    Admin Tools
+    <%= link_to "Admin Tools", admin_path %>
   </div>
 <% end %>

@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :providers
   has_many :tools
+  has_many :posts
 
   def self.create_from_omniauth(auth)
     user = User.new #cleaner way of doing this?
@@ -18,7 +19,11 @@ class User < ActiveRecord::Base
   end
 
   def my_tools
-    @tools = Tool.where( borrower: current_user.id )
+    @tools = Tool.where( borrower: self.id )
+  end
+
+
+  def members
   end
 
 end

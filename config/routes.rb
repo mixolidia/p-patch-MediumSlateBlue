@@ -1,19 +1,31 @@
 Rails.application.routes.draw do
 
   root 'home#index'
-  get 'auth/twitter/callback',        to: 'sessions#create'
-  get 'signout',                      to: 'sessions#destroy',       as: :signout
+  get  'auth/twitter/callback',       to: 'sessions#create'
+  get  'signout',                     to: 'sessions#destroy',     as: :signout
 
-# users
-  get '/profile',                     to: 'users#show',             as: :profile
+  # users
+  get   '/profile',                   to: 'users#show',           as: :profile
+  get   '/admin',                     to: 'users#admin',          as: :admin
+  patch '/admin/yes',                 to: 'users#make_admin'
 
-  #tools
-  get 'tools/',                       to: 'tools#index',            as: :tools
-  get 'tools/manage',                 to: 'tools#manage',           as: :manage_tools
-  post 'tools/add',                   to: 'tools#create',           as: :add_tool
-  delete 'tools/remove',              to: 'tools#destroy',          as: :remove_tool
-  post 'tools/checkout',              to: 'tools#check_out',        as: :check_out
-  post 'tools/checkin',               to: 'tools#check_in',         as: :check_in
+  # news
+  get   '/news',                      to: 'posts#posts',          as: :news
+  post  '/post-news',                 to: 'posts#create',         as: :create_news
+  get   '/make_news',                 to: 'posts#new',            as: :post_news
+  patch '/edit-news',                 to: 'posts#edit',           as: :edit_news
+  get   '/news/:title',               to: 'posts#post',           as: :post
+
+  # events
+  get '/calendar',                    to: 'events#calendar',      as: :calendar
+
+  # tools
+  get 'tools/',                     to: 'tools#index',          as: :tools
+  get 'tools/manage',               to: 'tools#manage',         as: :manage_tools
+  post 'tools/add',                 to: 'tools#create',         as: :add_tool
+  delete 'tools/remove',            to: 'tools#destroy',        as: :remove_tool
+  post 'tools/checkout',            to: 'tools#check_out',      as: :check_out
+  post 'tools/checkin',             to: 'tools#check_in',       as: :check_in
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -26,7 +26,8 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 #gem 'spring',        group: :development
 gem 'dotenv-rails'
 gem 'resque'
-gem 'resque-web', require: 'resque_web'
+
+gem 'omniauth'
 gem 'omniauth-twitter'
 
 group :development do

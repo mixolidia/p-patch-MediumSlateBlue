@@ -26,6 +26,8 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 #gem 'spring',        group: :development
 gem 'dotenv-rails'
 gem 'resque'
+
+gem 'omniauth'
 gem 'omniauth-twitter'
 
 group :development do
@@ -42,6 +44,11 @@ gem 'whenever', :require => false
 # Rails Bootstrap Forms is a rails form builder that makes it super easy to
 # integrate twitter bootstrap-style forms into your rails application.
 gem 'bootstrap_form'
+
+gem 'httparty', '~> 0.13.3'
+gem 'weather-underground', '~> 1.1.1'
+gem 'wunderground'
+gem 'redis-rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

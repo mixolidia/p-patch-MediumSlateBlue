@@ -1,21 +1,5 @@
-<% if current_user.user_is_admin? %>
-
-  <h1>Add tool from library</h1>
-
-  <%= form_for @tool, url: add_tool_path do |f| %>
-    <%=f.text_field :name, placeholder: "Tool" %>
-    <%=f.submit "Add" %>
-  <% end %>
-
-  <h1>Remove tool from library</h1>
-
-  <% @tools.each do |tool| %>
-    <%= tool.name %>
-    <%= button_to "Remove", {:action => 'destroy', :id => tool.id }, :method => :delete %>
-  <% end %>
-
+<% if current_user && current_user.user_is_admin? %>
+  <%= render "shared/tools_manage_admin" %>
 <% else %>
-
-  <h1>You must be an site administrator to add and remove tools.</h1>
-
+  <%= render "shared/tools_manage_all" %>
 <% end %>

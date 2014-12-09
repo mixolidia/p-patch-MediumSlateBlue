@@ -5,6 +5,8 @@
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
+  <link href='http://fonts.googleapis.com/css?family=Cedarville+Cursive' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Halant:400,500,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
   <header>
@@ -27,6 +29,8 @@
     </ul>
   </nav>
 </header>
+
+<%= flash[:notice] %>
 
 <%= yield %>
 

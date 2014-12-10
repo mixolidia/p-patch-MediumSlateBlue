@@ -1,10 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe ToolsController, :type => :controller do
-
+  let(:user) { User.create(email: "b@example.com") }
+  
   describe "POST create" do
+
     it "creates a new tool in the database" do
-      user = User.create!
       session[:user_id] = user.id
       user.administrator = true
       user.save
@@ -15,7 +16,6 @@ RSpec.describe ToolsController, :type => :controller do
     end
 
     it "sets available attribute to true" do
-      user = User.create!
       session[:user_id] = user.id
       user.administrator = true
       user.save
@@ -25,7 +25,6 @@ RSpec.describe ToolsController, :type => :controller do
     end
 
     it "only admin can add tools to library" do
-      user = User.create!
       session[:user_id] = user.id
       user.administrator = false
 
@@ -37,7 +36,6 @@ RSpec.describe ToolsController, :type => :controller do
 
   describe "POST destroy" do
     it "removes a tool from the database" do
-      user = User.create!
       session[:user_id] = user.id
       user.administrator = true
       user.save
@@ -49,7 +47,6 @@ RSpec.describe ToolsController, :type => :controller do
     end
 
     it "only admin can remove tools from library" do
-      user = User.create!
       user.administrator = false
       session[:user_id] = user.id
 
@@ -62,7 +59,6 @@ RSpec.describe ToolsController, :type => :controller do
   describe "POST check_out" do
     context "if there is a vaild current user" do
       it "a user can check out a tool from library" do
-        user = User.create!
         session[:user_id] = user.id
 
         tool = Tool.create!(name: "shovel", available: true, due_date: nil)
@@ -72,7 +68,6 @@ RSpec.describe ToolsController, :type => :controller do
       end
 
       it "tool can be checked out only if it is available" do
-        user = User.create!
         session[:user_id] = user.id
 
         tool = Tool.create!(name: "shovel", available: false, due_date: nil, user_id: 7)
@@ -82,7 +77,6 @@ RSpec.describe ToolsController, :type => :controller do
       end
 
       it "has a due date" do
-        user = User.create!
         session[:user_id] = user.id
 
         tool = Tool.create!(name: "shovel", available: true, due_date: nil)
@@ -128,7 +122,6 @@ RSpec.describe ToolsController, :type => :controller do
   describe "POST check_in" do
     context "with valid attributes" do
       it "user id matches user_id attribute value" do
-        user = User.create!
         session[:user_id] = user.id
 
         tool = Tool.create!(
@@ -142,7 +135,6 @@ RSpec.describe ToolsController, :type => :controller do
       end
 
       it "tool is checked back in" do
-        user = User.create!
         tool = Tool.create!(
                   name: "shovel",
                   available: false,
@@ -155,7 +147,6 @@ RSpec.describe ToolsController, :type => :controller do
 
     context "with invalid attributes" do
       it "tool will not be checked in" do
-        user = User.create!
         session[:user_id] = user.id
 
         tool = Tool.create!(

@@ -75,10 +75,10 @@ RSpec.describe ToolsController, :type => :controller do
         user = User.create!
         session[:user_id] = user.id
 
-        tool = Tool.create!(name: "shovel", available: false, due_date: nil, borrower: 7)
+        tool = Tool.create!(name: "shovel", available: false, due_date: nil, user_id: 7)
         post :check_out, {id: tool.id, available: tool.available}
 
-        expect(tool.reload.borrower).to eq 7
+        expect(tool.reload.user_id).to eq 7
       end
 
       it "has a due date" do
@@ -107,7 +107,7 @@ RSpec.describe ToolsController, :type => :controller do
       #   tool4 = Tool.create!(name: "rake", available: true, due_date: nil)
       #   post :check_out, {id: tool4.id, available: tool4.available}
       #
-      #   expect(tool.reload.borrower).to eq nil
+      #   expect(tool.reload.user_id).to eq nil
       # end
     end
 
@@ -127,7 +127,7 @@ RSpec.describe ToolsController, :type => :controller do
 
   describe "POST check_in" do
     context "with valid attributes" do
-      it "user id matches borrower attribute value" do
+      it "user id matches user_id attribute value" do
         user = User.create!
         session[:user_id] = user.id
 
@@ -135,7 +135,7 @@ RSpec.describe ToolsController, :type => :controller do
                   name: "shovel",
                   available: false,
                   due_date: Time.now,
-                  borrower: user.id)
+                  user_id: user.id)
         post :check_in, {id: tool.id}
 
         expect(tool.reload.available).to eq true
@@ -146,9 +146,9 @@ RSpec.describe ToolsController, :type => :controller do
         tool = Tool.create!(
                   name: "shovel",
                   available: false,
-                  borrower: user.id)
+                  user_id: user.id)
         post :check_in, {id: tool.id}
-        expect(tool.reload.borrower).to eq nil
+        expect(tool.reload.user_id).to eq nil
         expect(tool.reload.available).to eq true
       end
     end
@@ -161,7 +161,7 @@ RSpec.describe ToolsController, :type => :controller do
         tool = Tool.create!(
                   name: "shovel",
                   available: false,
-                  borrower: user.id + 1)
+                  user_id: user.id + 1)
 
         expect(tool.reload.available).to eq false
       end

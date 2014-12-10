@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def show
-    @tools = Tool.where( borrower: current_user.id )
+    @tools = Tool.where( user_id: current_user.id )
   end
 
   def admin

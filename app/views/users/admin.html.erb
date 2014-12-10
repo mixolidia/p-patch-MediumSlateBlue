@@ -8,7 +8,7 @@
     <th> </th> <th> </th> <th>Admin?</th>
     <% @members.each do |m| %>
 
-      <tr><td><%= image_tag( current_user.image, alt: " #{current_user.name}'s member image") %></td> <td><%= m.name  %></td> <td> <%= check_box(:user, :administrator, {checked: m.user_is_admin?})  %></td></tr>
+      <tr><td><%= image_tag( m.image, alt: " #{current_user.name}'s member image") %></td> <td><%= m.name  %></td> <td> <%= check_box(:user, :administrator, {checked: m.user_is_admin?})  %></td></tr>
 
 
     <% end %>

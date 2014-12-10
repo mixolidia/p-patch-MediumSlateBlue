@@ -1,5 +1,5 @@
 <div class="head_news">
-  <h2 class ="fornow">News here motherfuckers...</h2>
+  <h2 class ="fornow">News here m*therfuckas...</h2>
 </div><!--head_news-->
 
 <% if current_user.user_is_admin? %>
@@ -11,8 +11,15 @@
 
 <div class="news_posts">
 
-
+  <% @posts.each do |n| %>
+    <section class="news_listing">
+      <h3><%= n.title %> &nbsp; by <small><%= n.user.name %></small></h3>
+      <p><%=  truncate( n.content, length: 200, separator: " ", omission: " " ) { link_to "... Read more", post_path(n.title) } %></p>
+    </section>
 </div><!--news_posts-->
+
+  <% end %>
+
 <nav class="bottom_nav">
   <ul class="pager">
     <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Older</a></li>

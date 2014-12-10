@@ -12,7 +12,7 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
-  def news
+  def posts
     @posts = Post.all
   end
 

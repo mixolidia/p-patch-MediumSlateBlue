@@ -80,12 +80,4 @@ class ToolsController < ApplicationController
       redirect_to root_path
     end
   end
-
-  def check_due_date
-    @unavailable_tools = Tool.where(available: false)
-    @unavailable_tools.select { |unavailable_tool| unavailable_tool.due_date > Time.now + 3.days }
-    @unavailable_tools.each do |unavailable_tool|
-      UserMailer.tool_reminder(unavailable_tool.user_id).deliver
-    end
-  end
 end

@@ -44,4 +44,11 @@ class Tool < ActiveRecord::Base
   def belongs_to_user?(user)
     self.user_id == user
   end
+
+  def self.check_due_date
+    @unavailable_tools = Tool.where(available: false).where(due_date: (Time.now - 3.days..Time.now.midnight)
+    @unavailable_tools.each do |unavailable_tool|
+      Resque.enqueue(ToolReminder, unavailable_tool.id)
+    end
+  end
 end

@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   end
 
   def my_tools
-    @tools = Tool.where( borrower: self.id )
+    @tools = Tool.where( user_id: self.id )
   end
 
 

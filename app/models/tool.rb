@@ -1,6 +1,6 @@
 class Tool < ActiveRecord::Base
   belongs_to :user
-  
+
   validates :name, presence: true
   validates :available, :inclusion => {:in => [true, false]}
   validate :due_date_is_date?
@@ -33,15 +33,15 @@ class Tool < ActiveRecord::Base
 
   def check_out(user)
     self.available = false
-    self.borrower = user.id
+    self.user_id = user.id
   end
 
   def check_in(user)
     self.available = true
-    self.borrower = nil
+    self.user_id = nil
   end
 
   def belongs_to_user?(user)
-    self.borrower == user
+    self.user_id == user
   end
 end

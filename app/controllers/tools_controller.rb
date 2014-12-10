@@ -17,7 +17,7 @@ class ToolsController < ApplicationController
     failed_tools = []
     tool_params = params[:tool][:name]
     tool_params.each do |tool_name|
-      tool = Tool.new(name: tool_name)
+      tool = Tool.new(name: tool_name.upcase)
       tool.init
       if tool.save == false
         failed_tools<<tool_name
@@ -81,4 +81,11 @@ class ToolsController < ApplicationController
     end
   end
 
+  def check_due_date
+    @unavailable_tools = Tool.where(available: false)
+    @unavailable_tools.select { |unavailable_tool| unavailable_tool.due_date > Time.now + 3.days }
+    @unavailable_tools.each do |unavailable_tool|
+      UserMailer.tool_reminder(unavailable_tool.user_id).deliver
+    end
+  end
 end

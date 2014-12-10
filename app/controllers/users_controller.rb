@@ -9,12 +9,11 @@ class UsersController < ApplicationController
     @members = User.all
   end
 
-  def create
-    @user.email = (params[:email])
-    @user.save
-    UserMailer.sign_up(@user.id).deliver
-    session[:user_id] = @user.id
-    redirect_to root_path
-  end
-
+  # def create
+  #   @user.email = (params[:email])
+  #   @user.save
+  #   UserMailer.sign_up(@user.id).deliver
+  #   session[:user_id] = @user.id
+  #   redirect_to root_path
+  # end
 end

@@ -18,6 +18,13 @@ class PostsController < ApplicationController
 
   def post
     @post = Post.find_by(title: params[:title])
+  end
+
+  def edit
+    @post = Post.find_by(title: params[:title])
+  end
+
+  def updated
 
   end
 

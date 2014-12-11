@@ -2,7 +2,9 @@
   <h2 class ="fornow"><%= @post.title %> &nbsp; <small>by <%= @post.user.name %> </small></h2>
   <p><%= @post.content %></p>
 
-
+  <% if current_user.author(@post) %>
+    <%= button_to "Edit", edit_news_path, method: :get %>
+  <% end %>
 
   <div id="disqus_thread"></div>
   <script type="text/javascript">

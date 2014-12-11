@@ -1,5 +1,5 @@
 class ChangeToolsColumnName < ActiveRecord::Migration
   def change
-    rename_column :tools, :user_id, :user_id
+    rename_column :tools, :borrower, :user_id
   end
 end

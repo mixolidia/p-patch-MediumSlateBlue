@@ -12,12 +12,19 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
-  def news
+  def posts
     @posts = Post.all
   end
 
   def post
     @post = Post.find_by(title: params[:title])
+  end
+
+  def edit
+    @post = Post.find_by(title: params[:title])
+  end
+
+  def updated
 
   end
 

@@ -22,8 +22,11 @@ class User < ActiveRecord::Base
     @tools = Tool.where( user_id: self.id )
   end
 
-
   def members
+  end
+
+  def author(post)
+    self.id == post.user_id
   end
 
 end

@@ -1,9 +1,7 @@
-
-
 <h1>Tool Library</h1>
 
 <% @tools.each do |tool| %>
 <%= tool.name %>
 <% end %>
 
-You must be a member to check-out tools.
+You must <%=link_to "be a member", "/auth/twitter" %> to check-out tools.

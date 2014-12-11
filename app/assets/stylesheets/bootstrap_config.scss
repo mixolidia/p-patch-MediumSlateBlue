@@ -1,24 +1,168 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-@font-face {
-  font-family: 'candy';
-  src: url('candy___-webfont.eot');
-  src: url('candy___-webfont.eot?#iefix') format('embedded-opentype'),
-  url('candy___-webfont.woff2') format('woff2'),
-  url('candy___-webfont.woff') format('woff'),
-  url('candy___-webfont.ttf') format('truetype'),
-  url('candy___-webfont.svg#candy_inc.trial') format('svg');
-  font-weight: normal;
-  font-style: normal;
+  /* GLOBAL */
 
-}
+  body {
+    font-family: Garamond;
+    color: #444;
+    background-image: url("pattern-superlight.png");
+  }
 
-.fornow {
-  font-family: "candy";
-  color: #B30E79;
-  font-size: 600%;
-}
+  header {
+    padding-bottom: 10%;
+  }
+  .loginout {
+    padding-top: 2.5%;
+    margin-left: 80%;
+  }
+
+  h1 {
+    font-family: 'Cedarville Cursive', cursive;
+    color: #444;
+    font-size: 200%;
+    text-align: center;
+  }
+
+  h2 {
+    font-family: 'Cedarville Cursive', cursive;
+    color: #444;
+    font-size: 150%;
+  }
+
+  h3 {
+    font-family: 'Cedarville Cursive', cursive;
+    color: #444;
+    font-size: 100%;
+  }
+
+  /* NAVIGATION */
+
+  nav {
+    padding-top:5%;
+  }
+
+  nav li {
+    list-style-type: none;
+    padding-left: 5%;
+    padding-bottom: 5%;
+  }
+
+  nav li a {
+    background-color: #FF00FF ;
+    padding: 2.5%;
+  }
+
+  nav li a:hover, nav li a:focus {
+    color: #444;
+  }
+
+
+  .overflow {
+    position:absolute;
+    top:0;
+    left:0;
+    display: block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-top: 0;
+    color:#ccc;
+    max-width:100%;
+    float: left;
+  }
+
+  .overflow li {
+    color:#ccc;
+    line-height:50px;
+    padding:0 5px;
+    margin:0;
+    display:inline;
+    float: left;
+    padding-top: 10%;
+  }
+
+
+  a {
+    color: #444;
+    background-color: #FF00FF ;
+  }
+
+  a:hover, a:focus, a:active {
+    text-decoration: none;
+    color: #444;
+    background-color: #ededed;
+  }
+
+  div .btn {
+    display: inline;
+  }
+
+  .round-button {
+    width:80px;
+    height:80px;
+    border-radius:40px;
+    font-size: 12px;
+    display:inline;
+    border: none;
+  }
+
+  .return {
+    background:linear-gradient(to bottom, #5e5c51, #28261c);
+    color: #fff;
+  }
+
+  .return:hover, .return:focus {
+    color: #444;
+    background:linear-gradient(to bottom, #ebf981, #FF00FF );
+  }
+
+  .check-out {
+    color: #444;
+    background:linear-gradient(to bottom, #ebf981, #FF00FF );
+  }
+
+  .check-out:hover, .check-out:focus {
+    color: #fff;
+    background:linear-gradient(to bottom, #5e5c51, #28261c);
+  }
+
+  .center {
+    text-align: center;
+  }
+
+  /* HOMEPAGE */
+
+  .weather {
+    border: 1px solid #444;
+    padding: 2%;
+  }
+
+  /* TOOLS */
+
+  #add_field {
+    color: #444;
+    font-family: 'Cedarville Cursive', cursive;
+  }
+
+  .remove_field {
+    color: #444;
+    font-family: 'Cedarville Cursive', cursive;
+  }
+
+  .tool_name:hover, .tool_name:focus {
+    border: 2px solid #444;
+  }
+
+  .submit {
+    margin-top: 5%;
+    background-color: #444;
+    color: #ffffff;
+  }
+
+  .add-tools {
+    margin-left: 25%;
+  }
 
 .img-circle {
   max-width: 48px;

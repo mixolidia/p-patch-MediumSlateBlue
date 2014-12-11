@@ -50,6 +50,8 @@ gem 'weather-underground', '~> 1.1.1'
 gem 'wunderground'
 gem 'redis-rails'
 
+gem "simple_calendar", "~> 1.1.0"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

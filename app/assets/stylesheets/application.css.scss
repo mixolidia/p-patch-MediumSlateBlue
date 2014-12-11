@@ -32,12 +32,19 @@ h1 {
   font-family: 'Cedarville Cursive', cursive;
   color: #444;
   font-size: 200%;
+  text-align: center;
 }
 
 h2 {
   font-family: 'Cedarville Cursive', cursive;
   color: #444;
   font-size: 150%;
+}
+
+h3 {
+  font-family: 'Cedarville Cursive', cursive;
+  color: #444;
+  font-size: 100%;
 }
 
 nav {
@@ -69,17 +76,29 @@ a:hover, a:focus {
   background-color: #ededed;
 }
 
-/* .round-button {
-  display:block;
-  width: 30%;
-  height: 30%;
-  border-radius: 30%;
-  line-height: 30%;
-  font-size: 12px;
-  text-align: center;
-  text-decoration: none;
-}*/
+div .btn {
+  display: inline;
+}
 
+.round-button {
+  width:80px;
+  height:80px;
+  border-radius:40px;
+  background:linear-gradient(to bottom, #5e5c51, #28261c);
+  color: #fff;
+  font-size: 12px;
+  display:inline;
+}
+
+.round-button:hover, .round-button:focus {
+  color: #444;
+  background:linear-gradient(to bottom, #ebf981, #e1ff00);
+  border: none;
+}
+
+.center {
+  text-align: center;
+}
 
 /* HOMEPAGE */
 
@@ -88,21 +107,8 @@ a:hover, a:focus {
   padding: 2%;
 }
 
-// .round-button {
-//   display:block;
-//   width:100px;
-//   height:100px;
-//   border-radius:50px;
-//   font-size:12px;
-//   color:#fff;
-//   line-height:100px;
-//   text-align:center;
-//   text-decoration:none;
-//   background:#000;
-// }
-//
-// .round-button:hover, .round-button:focus {
-//   background: #262626;
-//   color:#ccc;
-//   text-decoration:none;
-// }
+/* TOOLS */
+
+.tools {
+  transform: rotate(90deg);
+}

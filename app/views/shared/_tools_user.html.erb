@@ -1,12 +1,15 @@
 <h1>Tools Library</h1>
 
-<h2>Tools Currently Checked Out</h2>
-<div class="table-responsive">
-  <table class="table table-striped table-condensed">
+<div class="center">
+  <%= image_tag("garden-tools.png", height: "200px", alt:"Garden Tools") %>
+</div>
+
+<div class="table">
+  <table class="table table-condensed">
     <thead>
       <tr>
-        <td>Tool Name</td>
-        <td>Due Back</td>
+        <td><strong>Currently Checked Out</strong></td>
+        <td><strong>Due Back</strong></td>
       </tr>
     </thead>
   <% @unavailable_tools.each do |unavailable_tool| %>
@@ -26,8 +29,9 @@
 
 <h2>Available Tools</h2>
 
-<% @available_tools.each do |available_tool| %>
-  <%= available_tool.name %>
-  <%= button_to "Check Out", { :action => 'check_out', :id => available_tool.id },
-  :method => :check_out, class: "btn btn-default round-button" %>
-<% end %>
+<div class="container">
+  <% @available_tools.each do |available_tool| %>
+    <%= button_to "#{available_tool.name}", { :action => 'check_out', :id => available_tool.id },
+    :method => :check_out, class: "btn btn-default round-button" %>
+  <% end %>
+</div>

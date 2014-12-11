@@ -9,9 +9,9 @@ class UserMailer < ActionMailer::Base
     )
   end
 
-  def tool_reminder(unavilable_tool)
-    @tool = unavailable_tool
-    @user = User.find(unavailble_tool.user_id)
+  def tool_reminder(due_tool)
+    @tool = due_tool
+    @user = User.find(due_tool.user_id)
     mail(
       to: [@user.email],
       subject: "Reminder"

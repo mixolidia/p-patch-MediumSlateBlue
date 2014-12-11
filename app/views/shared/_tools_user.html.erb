@@ -19,7 +19,7 @@
         <td><%= format_time(unavailable_tool.due_date) %></td>
         <% if current_user && unavailable_tool.belongs_to_user?(current_user.id) %>
         <td><%= button_to "Return", { :action => 'check_in', :id => unavailable_tool.id },
-        :method => :check_in, class: "btn btn-default round-button"  %></td>
+        :method => :check_in, class: "btn btn-default round-button return"  %></td>
       </tr>
     </tbody>
     <% end %>
@@ -29,9 +29,17 @@
 <hr>
 <h2>Available Tools</h2>
 
-<div class="container">
+<div class="table">
+  <table class="table table-condensed">
   <% @available_tools.each do |available_tool| %>
-    <%= button_to "#{available_tool.name}", { :action => 'check_out', :id => available_tool.id },
-    :method => :check_out, class: "btn btn-default round-button" %>
+    <tbody>
+      <tr>
+        <td><%= available_tool.name %></td>
+        <td></td>
+        <td><%= button_to "Check out", { :action => 'check_out', :id => available_tool.id },
+        :method => :check_out, class: "btn btn-default round-button check-out" %></td>
+      </tr>
+    </tbody>
   <% end %>
+  </table>
 </div>

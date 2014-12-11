@@ -13,6 +13,5 @@
 <h1>Remove Tool from Library</h1>
 
 <% @tools.each do |tool| %>
-<%= tool.name %>
-<%= button_to "Remove", {:action => 'destroy', :id => tool.id, :available => tool.available }, :method => :delete %>
+  <%= button_to "#{tool.name}", {:action => 'destroy', :id => tool.id, :available => tool.available }, :method => :delete, class: "btn btn-default round-button" %>
 <% end %>

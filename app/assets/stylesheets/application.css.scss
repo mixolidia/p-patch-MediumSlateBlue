@@ -112,3 +112,7 @@ div .btn {
 .tools {
   transform: rotate(90deg);
 }
+
+.input_field:hover, .input_field:focus {
+  border: 1px solid #444;
+}

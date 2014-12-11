@@ -26,6 +26,7 @@ body {
 
 .loginout {
   padding-top: 2.5%;
+  float: right;
 }
 
 h1 {
@@ -47,6 +48,8 @@ h3 {
   font-size: 100%;
 }
 
+/* NAVIGATION */
+
 nav {
   padding-top:5%;
 }
@@ -65,12 +68,36 @@ nav li a:hover, nav li a:focus {
   color: #444;
 }
 
+.overflow {
+  position:absolute;
+  top:0;
+  left:0;
+  display: block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-top: 0;
+  color:#ccc;
+  max-width:100%;
+  float: left;
+}
+
+.overflow li {
+  color:#ccc;
+  line-height:50px;
+  padding:0 5px;
+  margin:0;
+  display:inline;
+  float: left;
+  padding-top: 10%;
+}
+
 a {
   color: #444;
   background-color: #e1ff00;
 }
 
-a:hover, a:focus {
+a:hover, a:focus, a:active {
   text-decoration: none;
   color: #444;
   background-color: #ededed;

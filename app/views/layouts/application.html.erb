@@ -10,34 +10,37 @@
   <%= favicon_link_tag 'favicon.jpg' %>
   </head>
 <body>
-  <header>
-    <div class="loginout">
-      <% if current_user %>
-      Signed in as <%= current_user.name %>
-      <%=link_to "Sign out", signout_path %>
-      <% else %>
-      <%=link_to "Sign in with Twitter", "/auth/twitter" %>
-      <% end %>
-    </div>
+  <div class="container">
+    <header>
+      <div class="loginout">
+        <% if current_user %>
+        Signed in as <%= current_user.name %>
+        <%=link_to "Sign out", signout_path %>
+        <% else %>
+        <%=link_to "Sign in with Twitter", "/auth/twitter" %>
+        <% end %>
+      </div>
 
-  <nav class="navbar" role="navigation">
-    <ul class="nav nav-pills navbar-right">
-      <li> <%= link_to "Home", root_path %></li>
-      <li> <%= link_to "News", news_path %></li>
-      <li> <%= link_to "Calendar", calendar_path %></li>
-      <li> <%= link_to "Tools", tools_path %></li>
-      <li> <%= link_to "Profile", profile_path %></li>
-    </ul>
-  </nav>
-</header>
+    <nav class="navbar" role="navigation">
+      <ul class="nav-pills navbar-right">
+        <span class="overflow">
+        <li> <%= link_to "Home", root_path %></li>
+        <li> <%= link_to "News", news_path %></li>
+        <li> <%= link_to "Calendar", calendar_path %></li>
+        <li> <%= link_to "Tools", tools_path %></li>
+        <li> <%= link_to "Profile", profile_path %></li>
+        </span>
+      </ul>
+    </nav>
+  </header>
 
 <%= flash[:notice] %>
 
 <%= yield %>
 
-<footer>
-  
-</footer>
+  </div>
+  <footer>
 
+  </footer>
 </body>
 </html>

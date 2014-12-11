@@ -10,3 +10,7 @@ task "resque:setup" => :environment
 task "set_weather_time" => :environment do
   Weather.current_weather
 end
+
+task "check_due_date" => :environment do
+  Tool.check_due_date
+end

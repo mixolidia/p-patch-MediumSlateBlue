@@ -17,7 +17,7 @@ class ToolsController < ApplicationController
     failed_tools = []
     tool_params = params[:tool][:name]
     tool_params.each do |tool_name|
-      tool = Tool.new(name: tool_name)
+      tool = Tool.new(name: tool_name.upcase)
       tool.init
       if tool.save == false
         failed_tools<<tool_name
@@ -80,5 +80,4 @@ class ToolsController < ApplicationController
       redirect_to root_path
     end
   end
-
 end

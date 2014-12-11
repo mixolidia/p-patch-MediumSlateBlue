@@ -1,18 +1,45 @@
-<h1>Tools Currently Checked Out</h1>
+<h1>Tools Library</h1>
 
-<% @unavailable_tools.each do |unavailable_tool| %>
-  <%= unavailable_tool.name %>
-  <%= format_time(unavailable_tool.due_date) %>
-  <% if current_user && unavailable_tool.belongs_to_user?(current_user.id) %>
-    <%= button_to "Return", { :action => 'check_in', :id => unavailable_tool.id },
-    :method => :check_in, class: "btn btn-default round-button"  %>
+<div class="center">
+  <%= image_tag("garden-tools.png", height: "200px", alt:"Garden Tools") %>
+</div>
+
+<div class="table">
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <td><strong>Currently Checked Out</strong></td>
+        <td><strong>Due Back</strong></td>
+      </tr>
+    </thead>
+  <% @unavailable_tools.each do |unavailable_tool| %>
+    <tbody>
+      <tr>
+        <td class="col-lg-3 col-m-3 col-s-3 col-xs-3"><%= unavailable_tool.name %></td>
+        <td class="col-lg-3 col-m-3 col-s-3 col-xs-3"><%= format_time(unavailable_tool.due_date) %></td>
+        <% if current_user && unavailable_tool.belongs_to_user?(current_user.id) %>
+        <td class="col-lg-3 col-m-3 col-s-3 col-xs-3"><%= button_to "Return", { :action => 'check_in', :id => unavailable_tool.id },
+        :method => :check_in, class: "btn btn-default round-button return"  %></td>
+      </tr>
+    </tbody>
+    <% end %>
   <% end %>
-<% end %>
+  </table>
+</div>
+<hr>
+<h2>Available Tools</h2>
 
-<h1>Available Tools</h1>
-
-<% @available_tools.each do |available_tool| %>
-  <%= available_tool.name %>
-  <%= button_to "Check Out", { :action => 'check_out', :id => available_tool.id },
-  :method => :check_out, class: "btn btn-default round-button" %>
-<% end %>
+<div class="table">
+  <table class="table table-condensed">
+  <% @available_tools.each do |available_tool| %>
+    <tbody>
+      <tr>
+        <td class="col-lg-3 col-m-3 col-s-3 col-xs-3"><%= available_tool.name %></td>
+        <td class="col-lg-3 col-m-3 col-s-3 col-xs-3"></td>
+        <td class="col-lg-3 col-m-3 col-s-3 col-xs-3"><%= button_to "Check out", { :action => 'check_out', :id => available_tool.id },
+        :method => :check_out, class: "btn btn-default round-button check-out" %></td>
+      </tr>
+    </tbody>
+  <% end %>
+  </table>
+</div>

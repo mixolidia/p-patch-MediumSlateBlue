@@ -4,6 +4,10 @@ every 1.minute do
   rake "set_weather_time"
 end
 
+every 1.day do
+  rake "check_due_date"
+end
+
 # Use this file to easily define all of your cron jobs.
 #
 # It's helpful, but not entirely necessary to understand cron before proceeding.

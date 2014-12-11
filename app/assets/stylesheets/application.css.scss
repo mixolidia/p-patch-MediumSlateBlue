@@ -113,6 +113,26 @@ div .btn {
   transform: rotate(90deg);
 }
 
-.input_field:hover, .input_field:focus {
-  border: 1px solid #444;
+#add_field {
+  color: #444;
+  font-family: 'Cedarville Cursive', cursive;
+}
+
+.remove_field {
+  color: #444;
+  font-family: 'Cedarville Cursive', cursive;
+}
+
+.tool_name:hover, .tool_name:focus {
+  border: 2px solid #444;
+}
+
+.submit {
+  margin-top: 5%;
+  background-color: #444;
+  color: #ffffff;
+}
+
+.add-tools {
+  margin-left: 25%;
 }

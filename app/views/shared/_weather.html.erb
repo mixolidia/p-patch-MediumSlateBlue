@@ -1,1 +1,1 @@
-<div class="weather"><strong>Today's Weather:</strong> <%#=image_tag("#{weather.get_icon}") %><%= add_degree(weather.get_temp_f).html_safe %><strong>/</strong><%= weather.get_weather %><strong>/</strong><%= weather.get_location %></div>
+<div class="weather"><strong>Today's Weather:</strong> <%#=image_tag("#{weather.get_icon}") %><%= add_degree(weather.get_temp_f).html_safe %><strong> | </strong><%= weather.get_weather %><strong> | </strong><%= weather.get_location %></div>

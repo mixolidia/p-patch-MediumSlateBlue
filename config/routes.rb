@@ -14,9 +14,10 @@ Rails.application.routes.draw do
 
   # news
   get   '/news',                      to: 'posts#posts',          as: :news
-  post  '/post-news',                 to: 'posts#create',         as: :create_news
-  get   '/make_news',                 to: 'posts#new',            as: :post_news
-  patch '/edit-news',                 to: 'posts#edit',           as: :edit_news
+  post  '/news/post',                 to: 'posts#create',         as: :create_news
+  get   '/news/create',               to: 'posts#new',            as: :post_news
+  get   '/news/edit/:title',          to: 'posts#edit',           as: :edit_news
+  patch '/news/update',               to: 'post#updated',         as: :updated_news 
   get   '/news/:title',               to: 'posts#post',           as: :post
 
   # events

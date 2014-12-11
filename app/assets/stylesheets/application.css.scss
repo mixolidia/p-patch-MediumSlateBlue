@@ -17,29 +17,77 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+/* GLOBAL */
+
 body {
   font-family: Garamond;
   color: #444;
 }
 
+.loginout {
+  padding-top: 2.5%;
+}
+
 h1 {
+  font-family: 'Cedarville Cursive', cursive;
+  color: #444;
+  font-size: 200%;
+}
+
+h2 {
   font-family: 'Cedarville Cursive', cursive;
   color: #444;
   font-size: 150%;
 }
 
-a {
+nav {
+  padding-top:5%;
+}
 
+nav li {
+  list-style-type: none;
+  padding-left: 5%;
+}
+
+nav li a {
+  background-color: #e1ff00;
+  padding: 2.5%;
+}
+
+nav li a:hover, nav li a:focus {
+  color: #444;
+}
+
+a {
+  color: #444;
+  background-color: #e1ff00;
 }
 
 a:hover, a:focus {
   text-decoration: none;
+  color: #444;
+  background-color: #ededed;
 }
+
+.round-button {
+  display:block;
+  width: 80%;
+  height: 80%;
+  border-radius: 40%;
+  line-height: 80%;
+  font-size: 12px;
+  text-align: center;
+  text-decoration: none;
+}
+
+
+/* HOMEPAGE */
 
 .weather {
   border: 1px solid #444;
+  padding: 2%;
 }
-//
+
 // .round-button {
 //   display:block;
 //   width:100px;

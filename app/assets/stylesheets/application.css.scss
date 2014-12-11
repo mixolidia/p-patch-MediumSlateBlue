@@ -27,6 +27,18 @@ h1 {
   color: #444;
   font-size: 150%;
 }
+
+a {
+
+}
+
+a:hover, a:focus {
+  text-decoration: none;
+}
+
+.weather {
+  border: 1px solid #444;
+}
 //
 // .round-button {
 //   display:block;

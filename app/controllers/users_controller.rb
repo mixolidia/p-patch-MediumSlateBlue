@@ -9,11 +9,18 @@ class UsersController < ApplicationController
     @members = User.all
   end
 
-  # def create
-  #   @user.email = (params[:email])
-  #   @user.save
-  #   UserMailer.sign_up(@user.id).deliver
-  #   session[:user_id] = @user.id
-  #   redirect_to root_path
-  # end
+  def email
+    @user = User.find(session[:user_id])
+  end
+
+  def create
+    @user = User.find(session[:user_id])
+    @user.email = params[:user][:email]
+    if @user.save
+      #UserMailer.sign_up(@user.id).deliver
+      redirect_to root_path
+    else
+      render :add_email, {:notice => "Unable to save email."}
+    end
+  end
 end

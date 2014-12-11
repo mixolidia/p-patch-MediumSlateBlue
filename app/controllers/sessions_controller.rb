@@ -4,7 +4,12 @@ class SessionsController < ApplicationController
     auth = env["omniauth.auth"]
     provider = Provider.from_omniauth(auth)
     session[:user_id] = provider.user_id
-    redirect_to root_path
+    user = User.find(session[:user_id])
+    if user.email.nil?
+      redirect_to email_path
+    else
+      redirect_to root_path
+    end
   end
 
   def destroy

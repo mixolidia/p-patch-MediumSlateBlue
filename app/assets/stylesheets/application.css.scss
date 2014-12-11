@@ -17,18 +17,16 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
-// body {
-//   background-color: #fcfaea;
-//   font-family: Garamond;
-//   color: #444;
-// }
-//
-//
-// h1 {
-//   font-family: 'Cedarville Cursive', cursive;
-//   color: #444;
-//   font-size: 150%;
-// }
+body {
+  font-family: Garamond;
+  color: #444;
+}
+
+h1 {
+  font-family: 'Cedarville Cursive', cursive;
+  color: #444;
+  font-size: 150%;
+}
 //
 // .round-button {
 //   display:block;

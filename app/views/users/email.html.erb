@@ -1,0 +1,7 @@
+<h1>Complete Registration</h1>
+
+
+<%= bootstrap_form_for(@user, url:'/create') do |f|  %>
+  <%= f.text_field :email, :placeholder => "email@example.com" %>
+  <%= f.submit "Add email" %>
+<% end %>

@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   has_many :tools
   has_many :posts
 
-  validates :email, format: {with: /@/}
+  #validates :email, format: {with: /@/}
 
   def self.create_from_omniauth(auth)
     user = User.new #cleaner way of doing this?

@@ -65,7 +65,7 @@ nav li {
 }
 
 nav li a {
-  background-color: #e1ff00;
+  background-color: #ffb2f9;
   padding: 2.5%;
 }
 
@@ -101,7 +101,7 @@ nav li a:hover, nav li a:focus {
 
 a {
   color: #444;
-  background-color: #e1ff00;
+  background-color: #ffb2f9;
 }
 
 a:hover, a:focus, a:active {
@@ -130,12 +130,12 @@ div .btn {
 
 .return:hover, .return:focus {
   color: #444;
-  background:linear-gradient(to bottom, #ebf981, #e1ff00);
+  background:linear-gradient(to bottom, #fcc7f8, #ffb2f9);
 }
 
 .check-out {
   color: #444;
-  background:linear-gradient(to bottom, #ebf981, #e1ff00);
+  background:linear-gradient(to bottom, #fcc7f8, #ffb2f9);
 }
 
 .check-out:hover, .check-out:focus {
@@ -178,4 +178,14 @@ div .btn {
 
 .add-tools {
   margin-left: 25%;
+}
+
+/* PROFILE */
+
+
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto
 }

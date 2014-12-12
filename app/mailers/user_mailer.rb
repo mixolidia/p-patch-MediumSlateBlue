@@ -1,5 +1,6 @@
 class UserMailer < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "AdaGardenCollective@example.com"
+  add_template_helper(ToolsHelper)
 
   def sign_up(user_id)
     @user = User.find(user_id)

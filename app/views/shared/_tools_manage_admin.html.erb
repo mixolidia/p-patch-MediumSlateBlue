@@ -4,7 +4,7 @@
   <div id="add_field">Add another field</div>
 
   <div class="input_field">
-    <%= form_for @tool, url: add_tool_path do |f| %>
+    <%= bootstrap_form_for @tool, url: add_tool_path do |f| %>
   </div>
   <%=f.submit "Add to library", class: "submit" %>
 </div>

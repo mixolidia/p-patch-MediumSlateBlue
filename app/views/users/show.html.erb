@@ -1,24 +1,23 @@
-<div ="profile_header">
-  <%= image_tag( current_user.image, alt: " #{current_user.name}'s member image") %>
-  <h3><%= current_user.name %>'s Profile</h3>
+<div class="profile_header">
+  <%= image_tag( current_user.image, alt: " #{current_user.name}'s member image", class: "center") %>
+  <h1><%= current_user.name %>'s Profile</h1>
 </div>
 
 <div class="tools">
-  Tools You've Checked Out:
+  <h2>Tools You've Checked Out:</h2>
 
   <% current_user.my_tools.each do |t| %>
-    <ul>
-      <li><%= t.name %> &nbsp; <%= t.due_date %></li>
-    </ul>
+    <div><%= t.name %> &nbsp; <strong>Due Back:</strong> <%= format_time(t.due_date) %></div>
   <% end %>
 </div>
 
 <div class="events">
-  Events
+  <h2>Events You're Attending:</h2>
 </div>
 
 <% if current_user.user_is_admin? %>
   <div class="admin_tools">
     <%= link_to "Admin Tools", admin_path %>
+    <%= link_to "Manage Tool Library", manage_tools_path %>
   </div>
 <% end %>

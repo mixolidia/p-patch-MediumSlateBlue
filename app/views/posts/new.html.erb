@@ -4,7 +4,7 @@
 
 <div class="news_form">
 
-  <%= bootstrap_form_for(@post, url: '/post-news') do |f| %>
+  <%= bootstrap_form_for(@post, url: create_news_path) do |f| %>
   <%= f.text_field :title %>
   <%= f.text_area :content %>
   <%= f.submit "Post" %>

@@ -1,6 +1,9 @@
 require 'resque/server'
 
 Rails.application.routes.draw do
+  resources :calendars
+
+
   mount Resque::Server, :at => "/resque"
 
   root 'home#index'
@@ -17,11 +20,11 @@ Rails.application.routes.draw do
   post  '/news/post',                 to: 'posts#create',         as: :create_news
   get   '/news/create',               to: 'posts#new',            as: :post_news
   get   '/news/edit/:title',          to: 'posts#edit',           as: :edit_news
-  patch '/news/update',               to: 'post#updated',         as: :updated_news 
+  patch '/news/update',               to: 'post#updated',         as: :updated_news
   get   '/news/:title',               to: 'posts#post',           as: :post
 
   # events
-  get '/calendar',                    to: 'events#calendar',      as: :calendar
+  # get '/calendar',                    to: 'calendars#index',      as: :calendar
 
   # tools
   get 'tools/',                     to: 'tools#index',          as: :tools

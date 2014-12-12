@@ -1,4 +1,4 @@
 Hello <%=@user.name%>
 
 This is a reminder that your <%=@tool.name%> is due back to the garden library on
-<%=@tool.due_date %>.
+<%=format_time(@tool.due_date) %>.

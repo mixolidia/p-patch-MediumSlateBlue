@@ -8,7 +8,12 @@ class Post < ActiveRecord::Base
     all.sort { |a, b| a.created_at <=> b.created_at }
   end
 
-  def self.recent_five
-    all_by_date[0..4]
+  def self.recent_three
+    all_by_date[0..2]
+  end
+
+  def self.most_recent_post
+    recent_post = Post.last
+    Resque.enqueue(NewPost, recent_post.id)
   end
 end

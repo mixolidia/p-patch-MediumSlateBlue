@@ -20,14 +20,16 @@ class UserMailer < ActionMailer::Base
   end
 
   def all_emails
+
+  end
+
+  def new_post(most_recent)
     @users = User.all
     @emails = []
     @users.each do |user|
       @emails << user.email
     end
-  end
-
-  def new_post(most_recent)
+    
     @post = most_recent
     mail(
       bcc: @emails,

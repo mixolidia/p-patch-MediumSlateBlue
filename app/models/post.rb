@@ -12,7 +12,7 @@ class Post < ActiveRecord::Base
     all_by_date[0..2]
   end
 
-  def self.most_recent_post
+  def self.send_recent_post
     recent_post = Post.last
     Resque.enqueue(NewPost, recent_post.id)
   end

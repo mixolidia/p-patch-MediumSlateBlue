@@ -3,6 +3,13 @@
   <%= render "shared/weather" %>
   <div class="col-lg-5 col-m-5 col-s-5 col-xs-5">
       <h2>Recent News</h2>
+        <div class="news">
+          <% @posts.each do |post| %>
+          <h3><%= post.title %> by <%= post.user.name %></h3>
+          <%=  truncate( post.content, length: 75, separator: " ", omission: " " ) { link_to "... Read more", post_path(post.title) } %>
+          <% end %>
+        </div>
+
       <h2>Upcoming Events</h2>
   </div>
   <div class="col-lg-7 col-m-7 col-s-7 col-xs-7">
@@ -11,7 +18,4 @@
 </div>
 
 <div class="calendar">
-</div>
-
-<div class="news">
 </div>

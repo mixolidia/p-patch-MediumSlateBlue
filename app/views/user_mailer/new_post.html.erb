@@ -1,0 +1,6 @@
+Hello <%=@user.name%>
+
+There's new garden news!
+<%= @post.title %>
+<%= @post.user.name %>
+<%= truncate( @post.content, length: 75, separator: " ", omission: " " ) { link_to "... Read more", post_path(post.title) } %>

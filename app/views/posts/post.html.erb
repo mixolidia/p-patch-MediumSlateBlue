@@ -1,5 +1,6 @@
 <div class="single_news_post">
-  <h2 class ="fornow"><%= @post.title %> &nbsp; <small>by <%= @post.user.name %> </small></h2>
+  <h1><%= @post.title %></h1>
+  <h2>by <%= @post.user.name %></h2>
   <p><%= @post.content %></p>
 
   <% if current_user.author(@post) %>

@@ -5,7 +5,7 @@ class UserMailer < ActionMailer::Base
   def sign_up(user_id)
     @user = User.find(user_id)
     mail(
-      to: [@user.email, "from@example.com"],
+      to: [@user.email, "AdaGardenCollective@example.com"],
       subject: "Welcome!"
     )
   end
@@ -14,8 +14,26 @@ class UserMailer < ActionMailer::Base
     @tool = due_tool
     @user = User.find(due_tool.user_id)
     mail(
-      to: [@user.email],
+      to: [@user.email, "AdaGardenCollective@example.com"],
       subject: "Reminder"
+    )
+  end
+
+  def all_emails
+
+  end
+
+  def new_post(most_recent)
+    @users = User.all
+    @emails = []
+    @users.each do |user|
+      @emails << user.email
+    end
+    
+    @post = most_recent
+    mail(
+      bcc: @emails,
+      subject: "Garden News"
     )
   end
 end

@@ -1,5 +1,5 @@
 <div class="head_create_news">
-  <h2 class ="fornow">Make some news</h2>
+  <h1>Make some news</h1>
 </div><!--head_create_news-->
 
 <div class="news_form">
@@ -7,7 +7,7 @@
   <%= bootstrap_form_for(@post, url: create_news_path) do |f| %>
   <%= f.text_field :title %>
   <%= f.text_area :content %>
-  <%= f.submit "Post" %>
+  <div class="form-submit"><%= f.submit "Post" %></div>
   <% end %>
 
 </div><!--news_form-->

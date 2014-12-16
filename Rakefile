@@ -14,3 +14,7 @@ end
 task "check_due_date" => :environment do
   Tool.check_due_date
 end
+
+task "send_recent_post" => :environment do
+  Post.send_recent_post
+end

@@ -51,7 +51,7 @@ RSpec.describe ToolsController, :type => :controller do
       session[:user_id] = user.id
 
       expect {
-        post :create, {tool:{name: "shovel"}}
+        post :destroy, {tool:{name: "shovel"}}
       }.to change{Tool.count}.by(0)
     end
   end
